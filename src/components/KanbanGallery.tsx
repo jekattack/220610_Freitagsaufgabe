@@ -1,14 +1,20 @@
 import KanbanColumn from "./KanbanColumn";
 import './KanbanGallery.css'
+import {KanbanItem} from "../service/models";
+import {status} from "../service/models";
 
-export default function KanbanGallery(){
-    const status = ["Open","In Progress","Done"]
+interface KanbanGalleryProps{
+    items : Array<KanbanItem>
+}
+
+export default function KanbanGallery(props : KanbanGalleryProps){
+
 
     return(
         <div className={'gallery'}>
             {status.map(item=> <div>
                 <h1 className={'galleryHeader'}>{item}</h1>
-                <KanbanColumn/>
+                <KanbanColumn tasks={props.items.filter(task => task.status===item)}/>
             </div>)}
         </div>
     )

@@ -1,10 +1,15 @@
 import './KanbanCard.css'
+import {KanbanItem} from "../service/models";
 
-export default function KanbanCard(){
+interface KanbanCardProps{
+    infos : KanbanItem
+}
+
+export default function KanbanCard({infos} : KanbanCardProps){
     return(
         <div className={'card'}>
-            <h3>Code schreiben</h3>
-            <p>Code für die Freitagsaufgabe fertigstellen</p>
+            <h3>{infos.task}</h3>
+            <p>{infos.description}</p>
             <div className={'cardBtn'}>
                 <button className={'btn'}>{"<Back"}</button>
                 <button className={'btn'}>{"Next>"}</button>
