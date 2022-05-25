@@ -1,9 +1,10 @@
 import './KanbanForm.css'
-import {FormEvent,  useState} from "react";
-import {postNewItem} from "../service/apiService";
+import {Dispatch, FormEvent, SetStateAction, useState} from "react";
+import {getAllItems, postNewItem} from "../service/apiService";
+import {KanbanItem} from "../service/models";
 
 interface KanbanFormProps{
-    onChange: ()=>void
+    onChange: Dispatch<SetStateAction<KanbanItem[]>>
 }
 
 export default function KanbanForm(props : KanbanFormProps){
@@ -14,7 +15,12 @@ export default function KanbanForm(props : KanbanFormProps){
     const handleSubmit = (ev : FormEvent)=>{
         ev.preventDefault();
         postNewItem({'task':task,'description':description,'status':"OPEN"})
-            .then(()=> props.onChange)
+            .then(()=>{
+                getAllItems()
+                    .then(data =>props.onChange(data))
+            })
+            .catch(err=> console.log(err.message))
+
 
     }
 

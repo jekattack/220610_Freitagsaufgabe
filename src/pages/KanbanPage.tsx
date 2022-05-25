@@ -15,16 +15,12 @@ export default function KanbanPage(){
             .then(data => setItems(data))
     },[])
 
-    const reload = () => {
-        getAllItems()
-            .then(data => setItems(data))
-    }
 
     return(
         <div className={'kanbanPage'}>
             <Header/>
-            <KanbanForm onChange={reload}/>
-            <KanbanGallery items={items}/>
+            <KanbanForm onChange={setItems}/>
+            <KanbanGallery items={items} onChange={setItems}/>
         </div>
     )
 }
