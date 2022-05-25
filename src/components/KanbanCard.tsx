@@ -1,6 +1,6 @@
 import './KanbanCard.css'
 import {KanbanItem} from "../service/models";
-import {deleteItem, getAllItems} from "../service/apiService";
+import {changeItem, deleteItem, getAllItems} from "../service/apiService";
 import {Dispatch, SetStateAction} from "react";
 
 interface KanbanCardProps{
@@ -19,6 +19,33 @@ export default function KanbanCard({infos, onChange} : KanbanCardProps){
             .catch(err => console.log(err))
     }
 
+    const advanceItem = () => {
+        if (infos.status==="OPEN"){
+            infos.status="IN_PROGRESS"
+        } else {
+            infos.status="DONE"
+        }
+        updateItem()
+    }
+
+    const returnItem = () => {
+        if (infos.status==="DONE"){
+            infos.status="IN_PROGRESS"
+        } else {
+            infos.status="OPEN"
+        }
+        updateItem()
+    }
+
+    const updateItem = () => {
+        changeItem(infos)
+            .then(() =>{
+                getAllItems()
+                    .then(data => onChange(data))
+            })
+            .catch(err => console.log(err.message))
+    }
+
     return(
         <div className={'card'}>
             <h3>{infos.task}</h3>
@@ -27,12 +54,12 @@ export default function KanbanCard({infos, onChange} : KanbanCardProps){
                 {infos.status==="OPEN"?
                     <button className={'btn'} onClick={()=>removeItem()}>{"<Delete"}</button>
                     :
-                    <button className={'btn'}>{"<Back"}</button>
+                    <button className={'btn'} onClick={()=>returnItem()}>{"<Back"}</button>
                 }
                 {infos.status==="DONE"?
                     <button className={'btn'} onClick={()=>removeItem()}>{"Delete>"}</button>
                     :
-                    <button className={'btn'}>{"Next>"}</button>
+                    <button className={'btn'} onClick={()=>advanceItem()}>{"Next>"}</button>
                 }
             </div>
         </div>

@@ -15,3 +15,8 @@ export const deleteItem = (id ?: string) => {
     return axios.delete(`api/kanban/${id}`)
         .then(response => response.data)
 }
+
+export const changeItem = (item : KanbanItem) => {
+    return axios.put(`api/kanban`,item)
+        .then(response => response.data)
+}
