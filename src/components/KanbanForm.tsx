@@ -20,6 +20,8 @@ export default function KanbanForm(props : KanbanFormProps){
                     .then(data =>props.onChange(data))
             })
             .catch(err=> console.log(err.message))
+        setTask("")
+        setDescription("")
 
 
     }
