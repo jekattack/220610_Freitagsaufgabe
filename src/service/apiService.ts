@@ -20,3 +20,8 @@ export const changeItem = (item : KanbanItem) => {
     return axios.put(`api/kanban`,item)
         .then(response => response.data)
 }
+
+export const getItemById = (id : string) => {
+    return axios.get(`api/kanban/${id}`)
+        .then(response => response.data)
+}
