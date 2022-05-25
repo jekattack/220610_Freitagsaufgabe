@@ -1,0 +1,5 @@
+.column {
+    padding: 0 1rem;
+    overflow-y: scroll;
+    height: 37rem;
+}
