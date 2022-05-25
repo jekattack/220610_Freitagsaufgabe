@@ -7,7 +7,7 @@ export default function KanbanGallery(){
     return(
         <div className={'gallery'}>
             {status.map(item=> <div>
-                <h1>{item}</h1>
+                <h1 className={'galleryHeader'}>{item}</h1>
                 <KanbanColumn/>
             </div>)}
         </div>
