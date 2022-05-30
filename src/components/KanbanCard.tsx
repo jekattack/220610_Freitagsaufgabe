@@ -1,7 +1,7 @@
 import './KanbanCard.css'
 import {KanbanItem} from "../service/models";
-import {changeItem, deleteItem, getAllItems} from "../service/apiService";
-import {Dispatch, SetStateAction, useState} from "react";
+import {advanceKanban, deleteItem, getAllItems, returnKanban} from "../service/apiService";
+import {Dispatch, SetStateAction} from "react";
 import {useNavigate} from "react-router-dom";
 
 interface KanbanCardProps{
@@ -23,30 +23,19 @@ export default function KanbanCard({infos, onChange} : KanbanCardProps){
     }
 
     const advanceItem = () => {
-        if (infos.status==="OPEN"){
-            infos.status="IN_PROGRESS"
-        } else {
-            infos.status="DONE"
-        }
-        updateItem()
+        advanceKanban(infos)
+            .then(() => refresh())
     }
 
     const returnItem = () => {
-        if (infos.status==="DONE"){
-            infos.status="IN_PROGRESS"
-        } else {
-            infos.status="OPEN"
-        }
-        updateItem()
+        returnKanban(infos)
+            .then(() => refresh())
     }
     
 
-    const updateItem = () => {
-        changeItem(infos)
-            .then(() =>{
-                getAllItems()
-                    .then(data => onChange(data))
-            })
+    const refresh = () => {
+        getAllItems()
+            .then(data => onChange(data))
             .catch(err => console.log(err.message))
     }
 
