@@ -1,5 +1,6 @@
 import './GalleryItem.css';
 import Todo from "../service/model";
+import {useNavigate} from "react-router-dom";
 
 interface GalleryItemProps{
     todo: Todo;
@@ -8,6 +9,8 @@ interface GalleryItemProps{
 
 export default function GalleryItem(props: GalleryItemProps) {
 
+
+    const nav = useNavigate();
 
     const sendPutNext = () => {
         fetch('http://localhost:8080/api/kanban/next', {
@@ -49,25 +52,30 @@ export default function GalleryItem(props: GalleryItemProps) {
 
 
     return (
-        <div className="gallery-item-wrapper">
-            <div className="todo-info-wrapper">
-                {props.todo.task} <br/>
-                {props.todo.description}
-            </div>
-            <div className="todo-buttons-wrapper">
-                {
-                    (props.todo.status !== "OPEN") &&
-                    <button onClick={sendPutPrev}>Previous</button>
-                }
-                    <button>Edit</button>
-                {
-                    (props.todo.status !== "DONE") &&
-                    <button onClick={sendPutNext}>Next</button>
-                }
-                {
-                    (props.todo.status === "DONE") &&
-                    <button onClick={sendDelete}>Delete</button>
-                }
+
+        <div className="gallery-item-border-wrapper">
+            <div className="gallery-item-wrapper">
+                <div className="todo-info-wrapper">
+                    {props.todo.task}
+                </div>
+                <div className="todo-info-wrapper">
+                    {props.todo.description}
+                </div>
+                <div className="todo-button-wrapper">
+                    {
+                        (props.todo.status !== "OPEN") &&
+                        <button onClick={sendPutPrev}>Prev</button>
+                    }
+                        <button onClick={()=>nav('/'+props.todo.id)}>Edit</button>
+                    {
+                        (props.todo.status !== "DONE") &&
+                        <button onClick={sendPutNext}>Next</button>
+                    }
+                    {
+                        (props.todo.status === "DONE") &&
+                        <button onClick={sendDelete}>Delete</button>
+                    }
+                </div>
             </div>
         </div>
     );

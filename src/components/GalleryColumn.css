@@ -1,13 +1,10 @@
 .gallery-column-wrapper{
-    display: flex;
-    flex-direction: row;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 .single-column-wrapper{
     justify-content: space-evenly;
-    border-color: black;
-    border-width: 1px;
-    border-style: dashed;
     margin: 30px;
 }
