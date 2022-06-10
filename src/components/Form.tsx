@@ -1,11 +1,9 @@
 import './Form.css';
-import {useEffect, useState} from "react";
-import Todo from '../service/model';
+import {useState} from "react";
 
 interface FormProps{
     onTaskCreation: () => void;
 }
-
 
 export default function Form(props: FormProps){
 
@@ -31,8 +29,8 @@ export default function Form(props: FormProps){
                 <input type="text" id="task-input" value={newTodo} onChange={ev => setNewTodo(ev.target.value)} />
             </div>
             <div className="form-input-wrapper">
-                <label htmlFor="despricption-input">Despricption:</label>
-                <input type="text" id="despricption-input" value={newDescription} onChange={ev => setNewDescription(ev.target.value)} />
+                <label htmlFor="description-input">Description:</label>
+                <input type="text" id="description-input" value={newDescription} onChange={ev => setNewDescription(ev.target.value)} />
             </div>
             <button id="form-send-button" onClick={sendPostRequest}>Add Todo</button>
         </div>

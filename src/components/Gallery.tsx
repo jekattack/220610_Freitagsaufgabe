@@ -1,7 +1,6 @@
 import './Gallery.css';
 import './GalleryColumn.css';
 import GalleryColumn from "./GalleryColumn";
-import GalleryItem from "./GalleryItem";
 import React, {useEffect, useState} from "react";
 import Todo from "../service/model";
 import Form from "./Form";
@@ -30,7 +29,7 @@ export default function Gallery(){
     return (
         <div>
             <div className="form-wrapper">
-                <Form onTaskCreation={fetchTasks}/>
+                <Form onTaskCreation={fetchTasks} />
             </div>
             <div className="gallery-column-wrapper">
                 <div className="single-column-wrapper">

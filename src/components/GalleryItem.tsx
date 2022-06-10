@@ -1,8 +1,5 @@
 import './GalleryItem.css';
 import Todo from "../service/model";
-import setNewTodo from "./Form";
-import setNewDescription from "./Form";
-
 
 interface GalleryItemProps{
     todo: Todo;
@@ -49,12 +46,7 @@ export default function GalleryItem(props: GalleryItemProps) {
         }).then(() => props.onTaskChange())
     }
 
-    // const sendEdit = () => {
-    //     fetch(`http://localhost:8080/api/kanban/${props.todo.id}`)
-    //         .then(response => response.json())
-    //         .then((todo :Todo) => {
-    //         })
-    // }
+
 
     return (
         <div className="gallery-item-wrapper">

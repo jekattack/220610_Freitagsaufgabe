@@ -1,6 +1,5 @@
 import './GalleryColumn.css';
 import GalleryItem from "./GalleryItem";
-import Gallery from "./Gallery";
 import Todo from "../service/model";
 
 interface GalleryColumnProps{
