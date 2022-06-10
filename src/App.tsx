@@ -1,16 +1,16 @@
 import React from 'react';
-import KanbanPage from "./pages/KanbanPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import EditPage from "./pages/EditPage";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import Gallery from "./components/Gallery";
+
 
 function App() {
   return (
-      <BrowserRouter>
-          <Routes>
-              <Route path={'/'} element={<KanbanPage/>}/>
-              <Route path={'/:id'} element={<EditPage/>}/>
-          </Routes>
-      </BrowserRouter>
+      <div>
+        <Header />
+        <Gallery />
+      </div>
   );
 }
 

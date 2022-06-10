@@ -1,10 +1,7 @@
-import './Header.css'
+import './Header.css';
 
 export default function Header(){
-    return(
-        <div className={'header'}>
-            <h1>SUPER KANBAN BOARD 9000</h1>
-        </div>
-
+    return (
+        <div className="header-wrapper"><h1>Todo App 3000</h1></div>
     )
 }
