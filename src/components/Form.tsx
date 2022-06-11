@@ -24,14 +24,11 @@ export default function Form(props: FormProps){
 
     return (
         <div className="form-wrapper">
-            <div className="form-input-wrapper">
-                <label htmlFor="task-input">Task:</label>
-                <input type="text" id="task-input" value={newTodo} onChange={ev => setNewTodo(ev.target.value)} />
-            </div>
-            <div className="form-input-wrapper">
-                <label htmlFor="description-input">Description:</label>
-                <input type="text" id="description-input" value={newDescription} onChange={ev => setNewDescription(ev.target.value)} />
-            </div>
+            <label htmlFor="task-input">Task:</label>
+            <input type="text" id="task-input" value={newTodo} onChange={ev => setNewTodo(ev.target.value)} />
+            <label htmlFor="description-input">Description:</label>
+            <input type="text" id="description-input" value={newDescription} onChange={ev => setNewDescription(ev.target.value)} />
+            <br/>
             <button id="form-send-button" onClick={sendPostRequest}>Add Todo</button>
         </div>
     )
